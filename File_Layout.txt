@@ -50,8 +50,6 @@ autostream-agent/
 │       - Model download
 │       - Platform-specific steps
 │
-├── venv/
-│   └── Virtual environment (NOT committed)
 │
 └── .gitignore
     └── Excludes venv, cache files, etc.

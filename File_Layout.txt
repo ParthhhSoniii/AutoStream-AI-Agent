@@ -1,0 +1,57 @@
+autostream-agent/
+│
+├── app.py
+│   └── Streamlit UI entry point
+│       - Handles chat interface
+│       - Manages session state (messages, stage, lead data)
+│       - Calls the agent logic
+│
+├── agent/
+│   ├── __init__.py
+│   │
+│   ├── graph.py
+│   │   └── Agent controller (core logic)
+│   │       - Implements state machine
+│   │       - Routes conversation by stage & intent
+│   │       - Invokes RAG or tools when needed
+│   │
+│   ├── Intent.py
+│   │   └── Lightweight intent detection
+│   │       - greeting
+│   │       - info
+│   │       - interested
+│   │       - confirm
+│   │
+│   ├── RAG.py
+│   │   └── Retrieval-Augmented Generation
+│   │       - Loads knowledge base
+│   │       - Queries local LLM via Ollama
+│   │
+│   └── Tools.py
+│       └── Tool functions
+│           - mock_lead_capture(name, email, platform)
+│
+├── data/
+│   └── knowledge_base.md
+│       └── Static product information
+│           - Pricing
+│           - Features
+│           - Policies
+│
+├── requirements.txt
+│   └── Python dependencies only
+│       - streamlit
+│       - ollama (Python client)
+│       - python-dotenv
+│
+├── SETUP.txt  (or README.txt / README.md)
+│   └── Setup & run instructions
+│       - Ollama installation
+│       - Model download
+│       - Platform-specific steps
+│
+├── venv/
+│   └── Virtual environment (NOT committed)
+│
+└── .gitignore
+    └── Excludes venv, cache files, etc.

@@ -92,5 +92,27 @@ Terminal output:
 - Cost-efficient and offline-capable
 
 --------------------------------------------
-End of File
---------------------------------------------
+
+Architecture Explanation
+
+I did not rely on heavy agent frameworks like LangGraph or AutoGen. 
+Instead, I implemented the same ideas myself in a simple and transparent 
+way so the logic is easy to understand and debug.The assistant works as a 
+state-driven agent. Each conversation moves through clear stages such as greeting, 
+providing information, showing interest, and capturing lead details. 
+This avoids repeated responses and keeps the flow natural.
+
+State is managed using Streamlit session state, where I store the current stage, 
+chat history, and user details. For answering product-related questions, I use a basic 
+RAG approach by injecting a local knowledge base into the prompt. All responses are 
+generated using a local LLM via Ollama, which removes the need for paid APIs and keeps 
+the project fully offline.
+
+WhatsApp Deployment (Webhook Approach)
+
+To deploy this agent on WhatsApp, I would connect it using the WhatsApp Business API or Twilio. 
+Incoming WhatsApp messages would be sent to a webhook hosted on a backend server.The webhook 
+forwards the message to the agent, which processes it using the same state and intent logic,then 
+sends the response back to WhatsApp. The user’s phone number is used to maintain conversation state.
+
+This keeps the agent platform-independent and easy to extend.
